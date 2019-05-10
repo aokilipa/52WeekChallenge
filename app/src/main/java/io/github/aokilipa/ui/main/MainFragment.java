@@ -2,6 +2,7 @@ package io.github.aokilipa.ui.main;
 
 import androidx.databinding.DataBindingComponent;
 import androidx.databinding.DataBindingUtil;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 
 import android.os.Bundle;
@@ -9,22 +10,33 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.android.material.snackbar.Snackbar;
+
+import javax.inject.Inject;
+
 import io.github.aokilipa.R;
 import io.github.aokilipa.binding.FragmentDataBindingComponent;
 import io.github.aokilipa.databinding.MainFragmentBinding;
+import io.github.aokilipa.di.Injectable;
 import io.github.aokilipa.ui.base.BaseFragment;
 import io.github.aokilipa.utils.AutoClearedValue;
 import io.github.aokilipa.utils.Calculator;
 import timber.log.Timber;
 
-public class MainFragment extends BaseFragment {
+public class MainFragment extends BaseFragment implements Injectable {
 
-    private MainViewModel mViewModel;
+    @Inject
+    ViewModelProvider.Factory factory;
+    private MainViewModel viewModel;
 
     DataBindingComponent dataBindingComponent = new FragmentDataBindingComponent(this);
 
@@ -49,8 +61,8 @@ public class MainFragment extends BaseFragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mViewModel = ViewModelProviders.of(this).get(MainViewModel.class);
-        // TODO: Use the ViewModel
+        viewModel = ViewModelProviders.of(this,factory).get(MainViewModel.class);
+         init();
 
         ContributionAdapter contributionAdapter = new ContributionAdapter(dataBindingComponent);
         binding.get().rvWeeks.setAdapter(contributionAdapter);
@@ -61,6 +73,39 @@ public class MainFragment extends BaseFragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        Calculator.calculateTotal(50, 54);
+    }
+
+    public void init(){
+
+        binding.get().etDeposit.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (binding.get().etDeposit.getText() !=null){
+                    if (s.length()>1){
+                        int deposit = Integer.parseInt(binding.get().etDeposit.getText().toString());
+                        viewModel.calculateTotal(deposit,52);
+                    }
+                }
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
+        viewModel.getContributions().observe(this, result -> {
+
+            binding.get().setResultCount((result == null)
+                    ? 0 : result.size());
+            adapter.get().replace(result);
+            binding.get().executePendingBindings();
+        });
     }
 }

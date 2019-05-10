@@ -14,12 +14,12 @@ import java.util.List;
 
 /**
  * Project Name: 52WeekChallenge
- * Created by Okilipa Antony on 5/10/2019 at 11:49 AM
+ * Created by Okilipa Antony on 5/10/2019 at 12:51 PM
  *
- *  A generic RecyclerView adapter that uses Data Binding & DiffUtil.
+ * A generic RecyclerView adapter that uses Data Binding & DiffUtil.
  *
  * @param <T> Type of the items in the list
- * @param <V> The type of the ViewDataBinding
+ *  @param <V> The type of the ViewDataBinding
  */
 public abstract class DataBoundListAdapter<T, V extends ViewDataBinding>
         extends RecyclerView.Adapter<DataBoundViewHolder<V>>{
@@ -37,6 +37,7 @@ public abstract class DataBoundListAdapter<T, V extends ViewDataBinding>
     }
 
     protected abstract V createBinding(ViewGroup parent);
+
 
     @Override
     public final void onBindViewHolder(DataBoundViewHolder<V> holder, int position) {
@@ -117,5 +118,6 @@ public abstract class DataBoundListAdapter<T, V extends ViewDataBinding>
     public int getItemCount() {
         return items == null ? 0 : items.size();
     }
+
 
 }

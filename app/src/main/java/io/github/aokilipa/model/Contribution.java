@@ -1,12 +1,17 @@
 package io.github.aokilipa.model;
 
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
 /**
  * Project Name: 52WeekChallenge
  * Created by Okilipa Antony on 5/10/2019 at 10:57 AM
  *
  * This will hold the weekply contributions
  */
+@Entity
 public class Contribution {
+    @PrimaryKey
     public int week;
     public Integer deposit;
     public Integer total_amount;

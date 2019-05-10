@@ -80,7 +80,7 @@
                 android:layout_marginStart="@dimen/activity_horizontal_margin"
                 android:layout_marginTop="@dimen/activity_margin_half"
                 android:ellipsize="end"
-                tools:text="@{contribution.deposit}"
+                android:text="@{contribution.deposit.toString()}"
                 android:textAlignment="center"/>
 
 
@@ -125,7 +125,7 @@
                 android:layout_marginStart="@dimen/activity_horizontal_margin"
                 android:layout_marginTop="@dimen/activity_margin_half"
                 android:ellipsize="end"
-                android:text="@{contribution.total_amount}"
+                android:text="@{contribution.total_amount.toString()}"
                 android:textAlignment="center"/>
 
             <View

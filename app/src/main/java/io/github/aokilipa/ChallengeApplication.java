@@ -1,14 +1,23 @@
 package io.github.aokilipa;
 
+import android.app.Activity;
 import android.app.Application;
 
+import javax.inject.Inject;
+
+import dagger.android.DispatchingAndroidInjector;
+import dagger.android.HasActivityInjector;
+import io.github.aokilipa.di.AppInjector;
 import timber.log.Timber;
 
 /**
  * Project Name: 52WeekChallenge
  * Created by Okilipa Antony on 5/10/2019 at 10:18 AM
  */
-public class ChallengeApplication extends Application {
+public class ChallengeApplication extends Application implements HasActivityInjector {
+
+    @Inject
+    DispatchingAndroidInjector<Activity> dispatchingAndroidInjector;
 
     @Override
     public void onCreate() {
@@ -18,6 +27,16 @@ public class ChallengeApplication extends Application {
             Timber.plant(new Timber.DebugTree());
         }
 
+        /*
+         * Initialize Dagger Component
+         * */
+        AppInjector.init(this);
+
+    }
+
+    @Override
+    public DispatchingAndroidInjector<Activity> activityInjector(){
+        return dispatchingAndroidInjector;
     }
 
 }

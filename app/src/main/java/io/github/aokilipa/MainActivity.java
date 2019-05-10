@@ -6,9 +6,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
+import io.github.aokilipa.ui.base.BaseActivity;
 import io.github.aokilipa.ui.main.MainFragment;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
 
     public static Intent newIntent(Context context) {
         return new Intent(context, MainActivity.class);

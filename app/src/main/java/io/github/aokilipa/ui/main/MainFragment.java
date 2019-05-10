@@ -34,6 +34,8 @@ import timber.log.Timber;
 
 public class MainFragment extends BaseFragment implements Injectable {
 
+    final int NUM_OF_WEEKS = 52;
+
     @Inject
     ViewModelProvider.Factory factory;
     private MainViewModel viewModel;
@@ -88,7 +90,8 @@ public class MainFragment extends BaseFragment implements Injectable {
                 if (binding.get().etDeposit.getText() !=null){
                     if (s.length()>1){
                         int deposit = Integer.parseInt(binding.get().etDeposit.getText().toString());
-                        viewModel.calculateTotal(deposit,52);
+                        if (deposit<50000000 && deposit>0)
+                        viewModel.calculateTotal(deposit,NUM_OF_WEEKS);
                     }
                 }
 
@@ -102,9 +105,17 @@ public class MainFragment extends BaseFragment implements Injectable {
 
         viewModel.getContributions().observe(this, result -> {
 
+            int totalSaving;
+
             binding.get().setResultCount((result == null)
                     ? 0 : result.size());
             adapter.get().replace(result);
+
+            if (result != null && result.size()>0){
+                totalSaving = result.get(result.size() -1).total_amount;
+                binding.get().etTotalSaving.setText(String.valueOf(totalSaving));
+            }
+            binding.get().etTotalSaving.setText("");
             binding.get().executePendingBindings();
         });
     }

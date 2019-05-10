@@ -2,6 +2,9 @@
 <layout>
     <data>
         <variable name="resultCount" type="int"/>
+        <variable
+            name="viewModel"
+            type="io.github.aokilipa.ui.main.MainViewModel" />
     </data>
 
 <androidx.coordinatorlayout.widget.CoordinatorLayout
@@ -33,6 +36,7 @@
                 android:layout_weight="1"
                 android:hint="@string/starting_amount">
                 <com.google.android.material.textfield.TextInputEditText
+                    style="@style/TextAppearance.AppCompat.Small"
                     android:id="@+id/et_deposit"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

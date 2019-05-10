@@ -33,6 +33,7 @@ public class MainViewModel extends ViewModel {
         return contributions;
     }
 
+
     public void calculateTotal(int deposit, int duration){
         int newDeposit = 0;
         int totalAmount = 0;
@@ -48,7 +49,6 @@ public class MainViewModel extends ViewModel {
 
         repository.saveToDb(contributions);
     }
-
 
 
 

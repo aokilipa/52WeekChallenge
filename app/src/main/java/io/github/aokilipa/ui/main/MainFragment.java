@@ -87,13 +87,15 @@ public class MainFragment extends BaseFragment implements Injectable {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if (binding.get().etDeposit.getText() !=null){
-                    if (s.length()>1){
-                        int deposit = Integer.parseInt(binding.get().etDeposit.getText().toString());
-                        if (deposit<50000000 && deposit>0)
-                        viewModel.calculateTotal(deposit,NUM_OF_WEEKS);
+                    if (s!=null && s.toString().length()!=0){
+
+                        long deposit = Long.parseLong(s.toString());
+                            if (deposit<50000000 && deposit>0){
+                                viewModel.calculateTotal(deposit,NUM_OF_WEEKS);
+                            }
+
                     }
-                }
+
 
             }
 
@@ -105,7 +107,7 @@ public class MainFragment extends BaseFragment implements Injectable {
 
         viewModel.getContributions().observe(this, result -> {
 
-            int totalSaving;
+            long totalSaving;
 
             binding.get().setResultCount((result == null)
                     ? 0 : result.size());
@@ -115,7 +117,7 @@ public class MainFragment extends BaseFragment implements Injectable {
                 totalSaving = result.get(result.size() -1).total_amount;
                 binding.get().etTotalSaving.setText(String.valueOf(totalSaving));
             }
-            binding.get().etTotalSaving.setText("");
+            //binding.get().etTotalSaving.setText("");
             binding.get().executePendingBindings();
         });
     }

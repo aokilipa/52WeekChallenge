@@ -13,10 +13,10 @@ import androidx.room.PrimaryKey;
 public class Contribution {
     @PrimaryKey
     public int week;
-    public Integer deposit;
-    public Integer total_amount;
+    public Long deposit;
+    public Long total_amount;
 
-    public Contribution(int week, Integer deposit, Integer total_amount) {
+    public Contribution(int week, Long deposit, Long total_amount) {
         this.week = week;
         this.deposit = deposit;
         this.total_amount = total_amount;

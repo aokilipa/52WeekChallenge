@@ -12,7 +12,7 @@ import androidx.fragment.app.FragmentManager;
 import dagger.android.AndroidInjection;
 import dagger.android.support.AndroidSupportInjection;
 import dagger.android.support.HasSupportFragmentInjector;
-import io.github.aokilipa.ChallengeApplication;
+import io.github.aokilipa.BaseApplication;
 import io.github.aokilipa.di.component.DaggerAppComponent;
 
 /**
@@ -20,10 +20,10 @@ import io.github.aokilipa.di.component.DaggerAppComponent;
  */
 public class AppInjector {
     private AppInjector() {}
-    public static void init(ChallengeApplication challengeApplication) {
-        DaggerAppComponent.builder().application(challengeApplication)
-                .build().inject(challengeApplication);
-        challengeApplication
+    public static void init(BaseApplication baseApplication) {
+        DaggerAppComponent.builder().application(baseApplication)
+                .build().inject(baseApplication);
+        baseApplication
                 .registerActivityLifecycleCallbacks(new Application.ActivityLifecycleCallbacks() {
                     @Override
                     public void onActivityCreated(Activity activity, Bundle savedInstanceState) {

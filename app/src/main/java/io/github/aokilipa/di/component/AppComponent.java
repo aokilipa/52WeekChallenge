@@ -7,7 +7,7 @@ import javax.inject.Singleton;
 import dagger.BindsInstance;
 import dagger.Component;
 import dagger.android.support.AndroidSupportInjectionModule;
-import io.github.aokilipa.ChallengeApplication;
+import io.github.aokilipa.BaseApplication;
 import io.github.aokilipa.di.Builder.ActivityBuilder;
 import io.github.aokilipa.di.module.AppModule;
 
@@ -41,6 +41,6 @@ public interface AppComponent{
     /*
      * This is our Application class
      * */
-    void inject(ChallengeApplication application);
+    void inject(BaseApplication application);
 
 }

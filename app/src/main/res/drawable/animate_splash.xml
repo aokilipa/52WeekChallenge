@@ -3,18 +3,18 @@
     android:id="@+id/animation_list_splash"
     android:oneshot="false">
     <item
-        android:drawable="@drawable/ic_piggy"
+        android:drawable="@drawable/ic_splash"
         android:duration="250" />
     <item
-        android:drawable="@drawable/ic_logo"
+        android:drawable="@drawable/ic_splash_trans"
         android:duration="250" />
     <item
-        android:drawable="@drawable/ic_piggy"
+        android:drawable="@drawable/ic_splash"
         android:duration="250" />
     <item
-        android:drawable="@drawable/ic_logo"
+        android:drawable="@drawable/ic_splash_trans"
         android:duration="250" />
     <item
-        android:drawable="@drawable/ic_piggy"
+        android:drawable="@drawable/ic_splash"
         android:duration="250" />
 </animation-list>

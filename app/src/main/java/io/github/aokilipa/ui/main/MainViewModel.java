@@ -34,9 +34,9 @@ public class MainViewModel extends ViewModel {
     }
 
 
-    public void calculateTotal(int deposit, int duration){
-        int newDeposit = 0;
-        int totalAmount = 0;
+    public void calculateTotal(long deposit, int duration){
+        long newDeposit = 0;
+        long totalAmount = 0;
         int week;
         List<Contribution> contributions = new ArrayList<>();
         for (week = 1; week<=duration; week++){

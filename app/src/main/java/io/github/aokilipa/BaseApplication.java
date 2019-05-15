@@ -14,7 +14,7 @@ import timber.log.Timber;
  * Project Name: 52WeekChallenge
  * Created by Okilipa Antony on 5/10/2019 at 10:18 AM
  */
-public class ChallengeApplication extends Application implements HasActivityInjector {
+public class BaseApplication extends Application implements HasActivityInjector {
 
     @Inject
     DispatchingAndroidInjector<Activity> dispatchingAndroidInjector;

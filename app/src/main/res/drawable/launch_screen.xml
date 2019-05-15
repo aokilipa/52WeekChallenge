@@ -4,13 +4,13 @@
 
     <!-- The background color, preferably the same as your normal theme -->
     <item android:drawable="@color/white"/>
-
+<!--
     <item>
 
-        <bitmap
-            android:src="@drawable/ic_piggy"
-            android:gravity="center" />
+        &lt;!&ndash;<bitmap
+            android:src="@drawable/ic_splash"
+            android:gravity="center" />&ndash;&gt;
 
-    </item>
+    </item>-->
 
 </layer-list>

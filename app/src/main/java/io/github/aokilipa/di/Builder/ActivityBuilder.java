@@ -2,7 +2,6 @@ package io.github.aokilipa.di.Builder;
 
 import dagger.Module;
 import dagger.android.ContributesAndroidInjector;
-import io.github.aokilipa.ChallengeApplication;
 import io.github.aokilipa.MainActivity;
 
 /**

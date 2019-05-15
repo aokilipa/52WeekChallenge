@@ -12,7 +12,7 @@ import timber.log.Timber;
  */
 public class Calculator {
 
-    public static void calculateTotal(int deposit, int duration){
+  /*  public static void calculateTotal(int deposit, int duration){
         int newDeposit = 0;
         int totalAmount = 0;
         int week;
@@ -24,5 +24,5 @@ public class Calculator {
 
             Timber.d("week: %d, deposit: %d, total: %d", week, newDeposit, totalAmount);
          }
-    }
+    }*/
 }
